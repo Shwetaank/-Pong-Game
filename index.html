@@ -5,10 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pong Game</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Fallback original styles -->
+    <link rel="stylesheet" href="css/ui.css"> <!-- New SaaS UI styles -->
 </head>
 <body>
+    <div id="game-container">
+        <!-- Canvas will be injected here by JS instead of direct body -->
+
+        <!-- SaaS UI Overlay System -->
+        <div id="ui-layer">
+            
+            <!-- 1. Start Menu -->
+            <div id="start-menu" class="menu-screen active">
+                <h1 class="gradient-title">Cyber Pong</h1>
+                <p>Experience the classic game reinvented with a modern, glassmorphic SaaS interface and keyboard controls.</p>
+                <button id="btn-play" class="btn primary">Play Match</button>
+                <button id="btn-settings" class="btn">Settings</button>
+                
+                <div class="controls-hint">
+                    <span>Mouse</span> or <span class="key">W</span> <span class="key">S</span> or <span class="key">Up</span> <span class="key">Down</span>
+                </div>
+            </div>
+
+            <!-- 2. Settings Menu -->
+            <div id="settings-menu" class="menu-screen hidden">
+                <h1 class="gradient-title">Settings</h1>
+                
+                <div class="form-group">
+                    <label for="difficulty">AI Difficulty</label>
+                    <select id="difficulty">
+                        <option value="easy">Easy (Slower AI)</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="hard">Hard (Fast AI)</option>
+                        <option value="impossible">Impossible (Perfect AI)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="win-score">Winning Score</label>
+                    <input type="number" id="win-score" value="7" min="1" max="99">
+                </div>
+
+                <button id="btn-save-settings" class="btn primary">Save & Back</button>
+            </div>
+
+            <!-- 3. Pause Menu -->
+            <div id="pause-menu" class="menu-screen hidden">
+                <h1 class="gradient-title">Paused</h1>
+                <button id="btn-resume" class="btn primary">Resume</button>
+                <button id="btn-quit" class="btn">Quit to Menu</button>
+            </div>
+
+            <!-- 4. Game Over Menu -->
+            <div id="game-over-menu" class="menu-screen hidden">
+                <h1 id="winner-text" class="gradient-title">Player Wins!</h1>
+                <p>Match complete.</p>
+                <button id="btn-play-again" class="btn primary">Play Again</button>
+                <button id="btn-menu-return" class="btn">Main Menu</button>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Script -->
-    <script src="script.js"></script>
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>
